@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load mainpage %}
+{% load i18n %}
+{% block content%}
+    <h1>{% trans "Films list"%} </h1>
+<form method="POST" enctype="multipart/form-data">
+<ul>
+    {% for film in object_list %}
+    
+        <h2>{{ film.movie }}</h2> 
+        <a href="{% url 'filmspage:film-update' pk=film.id %}">
+            <button>edit</button>            
+        </a>
+        <br>
+            {% if film.photo %}
+                    <img src="{{ film.photo.url }}" alt="Film Photo" width="500px">
+                <p>Date: {{ film.date }}, Rating: {{ film.rating }},  Genre: {{ film.genre }}</p>     
+                <p>{{ film.description }},</p>     
+                {% endif %}
+    
+    {% endfor %}
+    <li> <a href="{% url 'filmspage:film-create'%}"> + add</a></li>
+</ul>
+</form>
+
+{% endblock %}
