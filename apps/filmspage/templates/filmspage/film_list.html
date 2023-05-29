@@ -1,26 +1,89 @@
 {% extends "base.html" %}
+{% load static %}
 {% load mainpage %}
 {% load i18n %}
 {% block content%}
-    <h1>{% trans "Films list"%} </h1>
-<form method="POST" enctype="multipart/form-data">
-<ul>
-    {% for film in object_list %}
-    
-        <h2>{{ film.movie }}</h2> 
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+<div class="wrapper">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" class="divcont" >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="./media/photo/fastxw.jpg" class="d-block w-100" alt="Fast X">
+            <div class="carousel-caption1">
+              <div class="caption-content1">
+              <a href="">
+              <img src="./media/photo/video-play-svgrepo-com.svg" alt="." width="70" height="70" style="display: inline-block;">
+              <h3 style="color:white; display: inline-block;">'Форсаж Х'</h3>
+              <h6 style="color:white; margin-left: 70px;">Watch the Final Trailer</h6>
+              </a>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="./media/photo/barbiw.jpg" class="d-block w-100" alt="Barbi">
+            <div class="carousel-caption1">
+              <div class="caption-content1">
+                <a href="">
+                <img src="./media/photo/video-play-svgrepo-com.svg" alt="." width="70" height="70" style="display: inline-block;">
+                <h3 style="color:white; display: inline-block;"> 'Барбі'</h3>
+                <h6 style="color:white; margin-left: 70px;">Watch the Final Trailer</h6>
+                </a>
+                </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="./media/photo/oppenheimer.jpg" class="d-block w-100" alt="Oppenheimer">
+            <div class="carousel-caption1">
+              <div class="caption-content1">
+                <a href="">
+                <img src="./media/photo/video-play-svgrepo-com.svg" alt="." width="70" height="70" style="display: inline-block;">
+                <h3 style="color:white; display: inline-block;">'Оппенгеймер'</h3>
+                <h6 style="color:white; margin-left: 70px;">Watch the Final Trailer</h6>
+                </a>
+                </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+  
+      </div>
+  <br/>
+  <br/>
+
+<H1 style="color: yellow;">What to watch</H1>
+
+  <div style="display: flex;">
+      {% for film in object_list %}
+      {% if film.photo %}
+      <div class="filmfield">
+      <img src="{{ film.photo.url }}" alt="Film Photo" height="400px">
+        <h3 style="display: inline-block; color: white; ">{{ film.movie }}</h3> 
+        
+        <p> ★ {{ film.rating }} </p> 
+        <button class="btn btn-outline-primary" style="width: 200px; margin-left: 30px;">+ Watchlist</button>
+        <p>Жанр: {{ film.genre }}</p>   
         <a href="{% url 'filmspage:film-update' pk=film.id %}">
-            <button>edit</button>            
+          <img src="./media/photo/pencil-svg.svg" alt="." width="15" height="15" style=" display: inline-block;">
         </a>
-        <br>
-            {% if film.photo %}
-                    <img src="{{ film.photo.url }}" alt="Film Photo" width="500px">
-                <p>Date: {{ film.date }}, Rating: {{ film.rating }},  Genre: {{ film.genre }}</p>     
-                <p>{{ film.description }},</p>     
-                {% endif %}
-    
-    {% endfor %}
-    <li> <a href="{% url 'filmspage:film-create'%}"> + add</a></li>
-</ul>
-</form>
+        <!-- <p>{{ film.description }},</p>  --> 
+        <!-- <p>Date: {{ film.date }}</p>--> 
+      </div>
+        <br> 
+        {% endif %}
+      
+      {% endfor %}
+      
+  </div>
+<li> <a href="{% url 'filmspage:film-create'%}"> + add</a></li>
+</div> 
 
 {% endblock %}

@@ -1,0 +1,56 @@
+body {
+    background-color: rgb(22, 22, 23); 
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+  }
+
+.wrapper{
+  margin-left: 250px;
+  margin-right: 250px;
+}
+
+.divcont{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}  
+
+.filmfield{
+
+  
+  display: inline-block; 
+  margin-right: 80px; 
+  background-color: #2a2a2b;
+  max-width: 350px; 
+  padding: 20px;
+
+
+}
+p{
+  color: #ffffff;
+}
+
+h2{
+  color: #fffbfb;
+}
+.svgcont{
+  height: 10px;
+}
+
+.carousel-caption1 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачный цвет фона */
+  color: #fff; /* Цвет текста */
+}
+.caption-content1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.watchlist{
+  
+}
