@@ -1,77 +1,102 @@
-<!-- Navbar -->
-{% load i18n %}
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <!-- Container wrapper -->
-    <div class="container-fluid">
-      <!-- Toggle button -->
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-mdb-toggle="collapse"
-        data-mdb-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <i class="fas fa-bars"></i>
-      </button>
-  
-      <!-- Collapsible wrapper -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!-- Navbar brand -->
-        <a class="navbar-brand mt-2 mt-lg-0" href="#">
-          <img
-            src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-            height="15"
-            alt="MDB Logo"
-            loading="lazy"
-          />
-        </a>
-        <!-- Left links -->
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'filmspage:film-list' %}">Films</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'mainpage:student-list' %}">List Students</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'auth:account' %}">Account</a>
-          </li>
-        </ul>
-        <!-- Left links -->
-      </div>
-      <!-- Collapsible wrapper -->
-    
-    
-      <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-          <input name="next" type="hidden" value="{{ redirect_to }}">
-          <select name="language">
-              {% get_current_language as LANGUAGE_CODE %}
-              {% get_available_languages as LANGUAGES %}
-              {% get_language_info_list for LANGUAGES as languages %}
-              {% for language in languages %}
-                  <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                      {{ language.name_local }} ({{ language.code }})
-                  </option>
-              {% endfor %}
-          </select>
-          <input type="submit" value="Go">
-      </form>
+ <!-- Navbar -->
+ {% load i18n %}
+ {% load static %}
 
-    {% if request.user.is_authenticated %}
-        <div class="dropdown">
-            <a class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                {{ request.user }}
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="{% url 'auth:logout' %}">Log out</a></li>
-            </ul>
-        </div>
-    {% else %}
-        <a href="{% url 'auth:login' %}">Log In</a>
-    {% endif %}
-    <!-- Container wrapper -->
-  </nav>
-  <!-- Navbar -->
+ 
+ <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+     <!-- Container wrapper -->
+     <div class="container-fluid">
+       <!-- Toggle button -->
+       <button
+         class="navbar-toggler"
+         type="button"
+         data-mdb-toggle="collapse"
+         data-mdb-target="#navbarSupportedContent"
+         aria-controls="navbarSupportedContent"
+         aria-expanded="false"
+         aria-label="Toggle navigation"
+       >
+         <i class="fas fa-bars"></i>
+       </button>
+   
+       <!-- Collapsible wrapper -->
+       <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 235px; margin-right: 250px; ">
+         <!-- Navbar brand -->
+         <a class="navbar-brand mt-2 mt-lg-0" href="#">
+           <img
+             src="../media/photo/imdb-logo.png"
+             height="30"
+             alt="IMDB Logo"
+             loading="lazy"
+           />
+         </a>
+         <!-- Left links -->
+         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop" style="background-color: rgb(45, 45, 43); border-color:yellow;" >Menu</button>
+
+<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel" style="background-color: rgb(22, 22, 23);">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasTopLabel" style="margin-left: 250px; margin-right: 250px; color: yellow;">
+      <img
+      src="../media/photo/imdb-logo.png"
+      height="50"
+      alt="IMDB Logo"
+      loading="lazy"
+    /></h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" style="background-color: yellow; margin-left: 250px; margin-right: 250px;"></button>
+  </div>
+  <div class="offcanvas-body" style="margin-left: 250px; margin-right: 250px; background-color: rgb(22, 22, 23); color: yellow;">
+    ...
+  </div>
+</div>
+
+           <li class="nav-item" style="margin-left: 5px;">
+             <a class="nav-link" href="{% url 'filmspage:film-list' %}">Films</a>
+           </li>
+           
+           <li class="nav-item" style="margin-left: 5px;">
+             <a class="nav-link" href="{% url 'mainpage:student-list' %}">List Students</a>
+           </li>
+           <li class="nav-item" style="margin-left: 5px;">
+             <a class="nav-link" href="{% url 'auth:account' %}">Account</a>
+           </li>
+         </ul>
+         
+         <!-- Left links -->
+       </div>
+           
+       <!-- Collapsible wrapper -->
+       
+     
+       <form action="{% url 'set_language' %}" method="post" >{% csrf_token %}
+           <input name="next" type="hidden" value="{{ redirect_to }}">
+           <select name="language">
+               {% get_current_language as LANGUAGE_CODE %}
+               {% get_available_languages as LANGUAGES %}
+               {% get_language_info_list for LANGUAGES as languages %}
+               {% for language in languages %}
+                   <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                       {{ language.name_local }} ({{ language.code }})
+                   </option>
+               {% endfor %}
+           </select>
+           <input type="submit" value="Go">
+       </form>
+       
+     {% if request.user.is_authenticated %}
+         <div class="dropdown" style="margin-left: 235px; margin-right: 250px;">
+             <a class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                 {{ request.user }}
+             </a>
+             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+             <li><a class="dropdown-item" href="{% url 'auth:logout' %}">Log out</a></li>
+             </ul>
+         </div>
+     {% else %}
+         <a href="{% url 'auth:login' %}">Log In</a>
+     {% endif %}
+     
+     <!-- Container wrapper -->
+   </nav>
+   <!-- Navbar -->

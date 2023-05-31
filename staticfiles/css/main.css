@@ -18,13 +18,24 @@ body {
 
   
   display: inline-block; 
-  margin-right: 80px; 
+  margin-right: 65px; 
   background-color: #2a2a2b;
   max-width: 350px; 
-  padding: 20px;
-
-
+  border-radius: 10px;
+ }
+.moviename{
+  display: inline-block;
+  color: white;
+  font-size: 24px;
+  margin-left: 20px;
 }
+.filmtext{
+  color: white;
+  font-size: 14px;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
 p{
   color: #ffffff;
 }
@@ -51,6 +62,17 @@ h2{
   align-items: flex-start;
 }
 
-.watchlist{
+
+.bookmark{
+  display: inline-block;
+  position: absolute;
+
+  left: 0px;
+  fill: awd;
+
+
+}
+.image-container {
+  position: relative;
   
 }
