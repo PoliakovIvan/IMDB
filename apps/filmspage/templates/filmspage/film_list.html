@@ -70,11 +70,12 @@
           <img src="./media/photo/bookmark-1-svgrepo-com.svg" alt="." class="bookmark" width="70 px" height= "70 px" >
         </div>
       <br>
-
-      <h3 class="moviename">{{ film.movie }}</h3> 
+       
+      
+      <a href="{% url 'filmspage:film-info' pk=film.id%}"><h3 class="moviename">{{ film.movie }}</h3> </a>
       
       <p class="filmtext"> ★ {{ film.rating }} </p> 
-      <button class="btn btn-outline-primary" style="width: 200px; margin-left: 30px;">+ Watchlist</button>
+      <button class="btn btn-outline-primary" style="width: 200px; margin-left: 30px; background-color: rgb(49, 49, 49);">+ Watchlist</button>
       <p class="filmtext">Жанр: {{ film.genre }}</p>   
       <a href="{% url 'filmspage:film-update' pk=film.id %}">
         <img src="./media/photo/pencil-svg.svg" alt="." width="15" height="15" style=" display: inline-block; margin-left: 20px;">
