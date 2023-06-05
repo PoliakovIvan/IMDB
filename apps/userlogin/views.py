@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, View, FormView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from apps.userlogin.forms import RegistrationForm, LoginForm
+import django.contrib.auth.tokens
 
 User = get_user_model()
 
@@ -17,7 +18,17 @@ class LoginView(FormView):
 
     def form_valid(self, form):
         login(self.request, User.objects.get(email=form.cleaned_data['email']))
-        return super().form_valid(form)
+        email = form.cleaned_data['email']
+        user = User.objects.get(email=email)
+        #return super().form_valid(form)
+    
+        if user.is_email_verified:
+                login(self.request, user)
+                return super().form_valid(form)
+        else:
+            # Обробка випадку, коли електронна пошта не підтверджена
+            # Наприклад, перенаправлення на сторінку попередження
+            return HttpResponseRedirect(reverse_lazy('auth:email_verification_required'))
         
 
 class RegisterView(CreateView):

@@ -9,4 +9,5 @@ class Film(models.Model):
     description = models.CharField(_('Description'), max_length=1000)
     genre = models.CharField(_('genre'), max_length=255)
     photo = models.ImageField(upload_to='D:/python_hilel/python_pro/Projects/IMDB/media/photo/')
+    trailer = models.URLField()
 

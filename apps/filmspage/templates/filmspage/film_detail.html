@@ -5,17 +5,47 @@
 {% load i18n %}
 {% block content%}
 <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-    <div >
-    <a href="{% url 'filmspage:film-info' pk=film.id%}"><h3 class="moviename">{{ film.movie }}</h3> </a>
+
+    <div class="filmdetail">
+        <div>
+            <div style="display: flex; align-items: baseline; ">
+                <table>
+                    <tr>
+                        <th><h3 class="movieinfo">{{ film.movie }}</h3></th>
+                    </tr>
+                    <tr>
+                        <th><p>{{ film.date }}</p></th>
+                    </tr>
+                </table>
+                <div style="margin-left: 750px;">
+                <table >
+                    <tr>
+                        <th colspan="2"><p style="font-size: 16px; margin-right: 10px;">IMDb RATING:</p></th>
+                    </tr>
+                    <tr>
+                        <th><p style="display: inline-block; color: yellow; font-size: 22px; margin-right: 3px;">★</p></th>
+                        <th><p style="display: inline-block; font-size: 22px; font-weight: bold; margin-right: 40px;">{{ film.rating }}/10</p></th>
+                    </tr>
+                
+                </table>
+                </div>
+          </div>
+
+        <div class="mediainfo">
+        <img src="{{ film.photo.url }}" alt="Film Photo" height="500" style="display: inline-block;" >
+        <iframe width="760" height="515" src="{{film.trailer}}" frameborder="0" allowfullscreen style="display: inline-block; margin-left: 3px;"></iframe>
+        </div>
+    <br>
     
-    <p class="filmtext"> ★ {{ film.rating }} </p> 
-    <p class="filmtext">Жанр: {{ film.genre }}</p>   
+    
+    <p >{{ film.genre }} </p> 
+    
+    
+    <p >{{ film.description }},</p> 
+
     <a href="{% url 'filmspage:film-update' pk=film.id %}">
-        <img src="../../{{ film.photo.url }}" alt="." width="15" height="15" style=" display: inline-block; margin-left: 20px;">
+        <img src="./media/photo/pencil-svg.svg" alt="." width="30" height="30" style=" display: inline-block; margin-left: 20px;">
     </a>
-    <p>{{ film.description }},</p> 
-    <p>Дата виходу: {{ film.date }}</p>
-    
     </div>
 
 {% endblock %}
