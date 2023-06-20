@@ -14,27 +14,6 @@ body {
   align-items: center;
 }  
 
-.filmfield{
-
-  
-  display: inline-block; 
-  margin-right: 65px; 
-  background-color: #2a2a2b;
-  max-width: 350px; 
-  border-radius: 10px;
- }
-.moviename{
-  display: inline-block;
-  color: white;
-  font-size: 24px;
-  margin-left: 20px;
-}
-.filmtext{
-  color: white;
-  font-size: 14px;
-  margin-left: 20px;
-  margin-top: 10px;
-}
 
 p{
   color: #ffffff;
@@ -47,50 +26,3 @@ h2{
   height: 10px;
 }
 
-.carousel-caption1 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачный цвет фона */
-  color: #fff; /* Цвет текста */
-}
-.caption-content1 {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-
-.bookmark{
-  display: inline-block;
-  position: absolute;
-
-  left: 0px;
-  fill: awd;
-
-
-}
-.image-container {
-  position: relative;
-  
-}
-.filmdetail{
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  
-  transform: translate(-50%, -50%);
-}
-.movieinfo{
-  display: inline-block;
-  font-size: 36px;
-  color: white;
-  font-weight: bold;
-}
-
-.mediainfo{
-  display: flex;
-  align-items: center; 
-}

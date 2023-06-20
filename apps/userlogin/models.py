@@ -17,7 +17,7 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 class User(AbstractBaseUser, PermissionsMixin):
-    confirmation_code = models.CharField(max_length=255, blank=True, null=True)
+    confirmation_code = models.CharField(max_length=255, unique=True)
     is_email_verified = models.BooleanField(default=False)
     email = models.EmailField(unique=True)
     is_staff = models.BooleanField(default=False)

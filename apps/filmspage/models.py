@@ -11,3 +11,5 @@ class Film(models.Model):
     photo = models.ImageField(upload_to='D:/python_hilel/python_pro/Projects/IMDB/media/photo/')
     trailer = models.URLField()
 
+
+

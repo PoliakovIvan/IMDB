@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% load bootstrap %}
 {% load static %}
-{% load mainpage %}
 {% load i18n %}
 {% block content%}
 <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/film_list.css' %}">
 
     <div class="filmdetail">
         <div>
@@ -23,7 +23,8 @@
                         <th colspan="2"><p style="font-size: 16px; margin-right: 10px;">IMDb RATING:</p></th>
                     </tr>
                     <tr>
-                        <th><p style="display: inline-block; color: yellow; font-size: 22px; margin-right: 3px;">★</p></th>
+                        <th>
+                            <p style="display: inline-block; color: yellow; font-size: 22px; margin-right: 3px;">★</p>                      
                         <th><p style="display: inline-block; font-size: 22px; font-weight: bold; margin-right: 40px;">{{ film.rating }}/10</p></th>
                     </tr>
                 
@@ -48,4 +49,7 @@
     </a>
     </div>
 
+    
+
+    <script src="{% static 'js/film_detail.js' %}"></script>
 {% endblock %}

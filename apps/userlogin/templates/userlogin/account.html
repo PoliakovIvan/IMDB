@@ -1,9 +1,13 @@
 {% extends "base.html" %}
-
+{% load static %}
+{% load i18n %}
 {% block content%}
 
-{{ request.user }}
-
-<a href="{% url 'auth:logout' %}"> Log out</a>
-
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/account.css' %}">
+<div class="main">
+    <p class="user">{{ request.user }}</p>
+    <br>
+    <a href="{% url 'auth:logout' %}"> <button class="button-48"><span>Log out</span></button></a>
+</div>
 {% endblock %}

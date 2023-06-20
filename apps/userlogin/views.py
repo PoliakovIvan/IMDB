@@ -22,7 +22,6 @@ class LoginView(FormView):
 
     def form_valid(self, form):
         login(self.request, User.objects.get(email=form.cleaned_data['email']))
-
         return super().form_valid(form)
             
 
@@ -33,18 +32,17 @@ class RegisterView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
-        # Збереження нового користувача
 
+        # Збереження нового користувача
         user.is_active = False  # Обліковий запис неактивний до підтвердження пошти
-        user.save()
-  
+        
         confirmation_code = str(uuid.uuid4())
         confirmation_link = self.request.build_absolute_uri(reverse('auth:confirm_email', kwargs={'code': confirmation_code}))
-   
+        user.confirmation_code = confirmation_code
+        user.save()
         # Відправка електронного листа для підтвердження
         html_message = render_to_string('userlogin/confirmation_email.html', {
-            'user': user,
-            
+            'user': user,          
             'confirmation_link': confirmation_link,
         })
 
@@ -63,19 +61,9 @@ class RegisterView(CreateView):
         email.send()
 
         # Перенаправлення на сторінку успішної реєстрації або іншу сторінку
-        #return HttpResponseRedirect(reverse_lazy('auth:registration_success'))\
-        return super().form_valid(form)
+        return self.registration_success(self.request)
 
-
-def confirm_email(request, code):
-    user = get_object_or_404(User, confirmation_code=code)
-    user.is_active = True
-    user.save()
-    return render(request, 'userlogin/confirmation_success.html')
-
-def registration_success(request):
-    # ваш код для обробки успішної реєстрації
-    return render(request, 'registration_success.html')
+    
 
 
 class AccountView(LoginRequiredMixin, TemplateView ):
@@ -89,12 +77,10 @@ class LogoutView(LoginRequiredMixin, View):
     
 
 class EmailConfirmationView(View):
-    def get(self, request, confirmation_code):
-        try:
-            user = User.objects.get(confirmation_code=confirmation_code)
-            user.is_active = True
-            user.save()
-            return render(request, 'userlogin/confirmation_success.html')
-        except User.DoesNotExist:
-            return render(request, 'userlogin/confirmation_error.html')
+    def get(self, request, code):
+        user = get_object_or_404(User, confirmation_code=code)
+        user.is_active = True
+        user.is_email_verified = True
+        user.save()
+        return render(request, 'userlogin/confirmation_success.html')
 
