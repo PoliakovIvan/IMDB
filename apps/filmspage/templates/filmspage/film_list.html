@@ -89,7 +89,7 @@
                         + Watchlist
                     </button>
                 </form>
-                <p class="filmtext">Жанр: {{ film.genre }}</p>
+              
             </div>
         {% endif %}
     {% endfor %}
@@ -104,5 +104,27 @@
   
   <script src="{% static 'js/film_list.js' %}"></script>
   
-
+<footer>
+  <div class="iconsdiv">
+    <button class="icons"><img src="./media/icons/icons8-github-64.png" class="imgicons"></img></button>
+    <button class="icons"><img src="./media/icons/icons8-linkedin-50.png" class="imgicons"></img></button>
+    <button class="icons"><img src="./media/icons/icons8-instagram-50.png" class="imgicons"></img></button>
+    
+  </div>
+  <div class="footer_p">
+    <p> Get the IMDb App</p>
+    <p> Help</p>
+    <p> Site Index</p>
+    <p> IMDbPro</p>
+  </div>
+  <div class="footer_p">
+    <p> Press Room</p>
+    <p> Advertising</p>
+    <p> Jobs</p>
+    <p>Conditions of Use</p>
+    <p >Privacy Policy</p>
+    <p >Your Ads Privacy Choices</p>
+  </div>
+  <br>
+</footer>
 {% endblock %}

@@ -1,13 +1,11 @@
 from django.shortcuts import get_object_or_404, redirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from requests import request
-
 from apps.filmspage.models import Film
 from .models import Watchlist
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import JsonResponse
+
 
 class WatchlistView(LoginRequiredMixin, ListView ):
     model = Watchlist
@@ -39,8 +37,9 @@ def add_to_watchlist(request, film_id):
         film = get_object_or_404(Film, id=film_id)
         try:
             watchlist = Watchlist.objects.get(user=request.user, film=film)
-            watchlist.delete()  # Видаляємо запис, якщо вже існує
+            watchlist.delete()  
         except Watchlist.DoesNotExist:
             watchlist = Watchlist(user=request.user, film=film)
             watchlist.save()
     return redirect('filmspage:film-list')
+

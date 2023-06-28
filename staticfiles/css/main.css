@@ -3,6 +3,7 @@ body {
     font-family: Roboto,Helvetica,Arial,sans-serif;
   }
 
+
 .wrapper{
   margin-left: 250px;
   margin-right: 250px;
@@ -26,3 +27,24 @@ h2{
   height: 10px;
 }
 
+.icons{
+  height: 60px;
+  width: 60px;
+  background-color: #262627;
+  border: 1px solid transparent;
+ 
+}
+.iconsdiv{
+  margin-left: 600px;
+  margin-top: 50px;
+}
+
+.footer_p{
+  display: flex;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Відступ між елементами */
+  
+}

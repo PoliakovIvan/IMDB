@@ -43,7 +43,11 @@ INSTALLED_APPS = [
     'apps.userlogin',
     'apps.filmspage',
     'apps.watchlist',
+    'apps.genres',
+    'apps.genreslist',
     'bootstrapform',
+    
+  
 ]
 
 MIDDLEWARE = [

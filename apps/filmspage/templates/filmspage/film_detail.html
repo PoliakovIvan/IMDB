@@ -38,16 +38,19 @@
         </div>
     <br>
     
-    
-    <p >{{ film.genre }} </p> 
-    
-    
+    {% for genre in film.genre.all %}
+        <p>{{ genre.genres }}</p>
+    {% endfor %}
+
+
+
     <p >{{ film.description }},</p> 
 
+    <!--
     <a href="{% url 'filmspage:film-update' pk=film.id %}">
         <img src="./media/photo/pencil-svg.svg" alt="." width="30" height="30" style=" display: inline-block; margin-left: 20px;">
     </a>
-    </div>
+    </div>-->
 
     
 
