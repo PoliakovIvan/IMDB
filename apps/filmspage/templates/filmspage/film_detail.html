@@ -37,22 +37,48 @@
         <iframe width="760" height="515" src="{{film.trailer}}" frameborder="0" allowfullscreen style="display: inline-block; margin-left: 3px;"></iframe>
         </div>
     <br>
-    
-    {% for genre in film.genre.all %}
-        <p>{{ genre.genres }}</p>
+
+    {% for genres in genres_list %}
+        <p class="genres">{{ genres.genre.genres }}</p>
     {% endfor %}
 
+    <br>
+    <p >{{ film.description }}</p> 
 
 
-    <p >{{ film.description }},</p> 
-
-    <!--
-    <a href="{% url 'filmspage:film-update' pk=film.id %}">
-        <img src="./media/photo/pencil-svg.svg" alt="." width="30" height="30" style=" display: inline-block; margin-left: 20px;">
-    </a>
-    </div>-->
 
     
 
     <script src="{% static 'js/film_detail.js' %}"></script>
+
+    <footer>
+        <div class="iconsdiv">
+            <a href="https://github.com/PoliakovIvan">
+                <button class="icons"><img src="../../media/icons/icons8-github-64.png" class="imgicons"></img></button>
+            </a>
+          <a  href="https://www.linkedin.com/in/ivan-poliakov-2b6177223/">
+            <button class="icons"><img src="../../media/icons/icons8-linkedin-50.png" class="imgicons"></img></button>
+          </a>
+          <a  href="https://www.instagram.com/poliakov03_/">
+            <button class="icons"><img src="../../media/icons/icons8-instagram-50.png" class="imgicons"></img></button>
+          </a>
+          
+        </div>
+        <div class="footer_p">
+          <p> Get the IMDb App</p>
+          <p> Help</p>
+          <p> Site Index</p>
+          <p> IMDbPro</p>
+        </div>
+        <div class="footer_p">
+          <p> Press Room</p>
+          <p> Advertising</p>
+          <p> Jobs</p>
+          <p>Conditions of Use</p>
+          <p >Privacy Policy</p>
+          <p >Your Ads Privacy Choices</p>
+        </div>
+        <br>
+      </footer>
+    
 {% endblock %}

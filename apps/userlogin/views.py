@@ -10,7 +10,7 @@ import django.contrib.auth.tokens
 from django.core.mail import send_mail, EmailMessage
 from django.template.loader import render_to_string
 import uuid
-
+from django.views.generic import TemplateView
 
 User = get_user_model()
 
@@ -29,6 +29,7 @@ class RegisterView(CreateView):
     form_class = RegistrationForm
     template_name = 'userlogin/register.html'
     success_url = reverse_lazy('auth:login')
+
 
     def form_valid(self, form):
         user = form.save()
@@ -61,9 +62,13 @@ class RegisterView(CreateView):
         email.send()
 
         # Перенаправлення на сторінку успішної реєстрації або іншу сторінку
-        return self.registration_success(self.request)
+        return self.registration_success()
+    def get_success_url(self):
+        return reverse('auth:account')
 
-    
+    def registration_success(self):
+        return HttpResponseRedirect(self.get_success_url())
+
 
 
 class AccountView(LoginRequiredMixin, TemplateView ):
@@ -74,7 +79,10 @@ class LogoutView(LoginRequiredMixin, View):
     def get(self, request):
         logout(request)
         return HttpResponseRedirect('/auth/login')
-    
+
+class RegistrationSuccessView(TemplateView):
+    template_name = 'userlogin/registration_success.html'
+
 
 class EmailConfirmationView(View):
     def get(self, request, code):

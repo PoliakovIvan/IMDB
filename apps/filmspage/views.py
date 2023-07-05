@@ -1,9 +1,8 @@
 from django.urls import reverse_lazy
 from .models import Film
-from django.views.generic import ListView, CreateView, UpdateView, DetailView, View
-from django.shortcuts import render
-from apps.watchlist.models import Watchlist
-from apps.genreslist.models import GenresList
+from django.views.generic import ListView, CreateView, UpdateView, DetailView
+
+
 
 class FilmListView(ListView):
     model = Film
@@ -24,11 +23,11 @@ class FilmInfoView(DetailView):
     success_url = reverse_lazy('filmspage:film-list')
     fields = ['movie', 'date', 'rating', 'description', 'genre', 'photo']
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        film = self.get_object()
+        genres_list = film.genresfilms_set.all() 
+        context['genres_list'] = genres_list
+        return context
 
-def genres_view(request):
-    genres_data = GenresList.objects.all()
-    context = {
-        'genres_data': genres_data,
-    }
-    return render(request, 'film_detail.html', context)
-
+    

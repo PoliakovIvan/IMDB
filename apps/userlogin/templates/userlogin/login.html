@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
+<div class="form-wrapper">
 <form class="form" method="POST">
   {% csrf_token %}
 
@@ -25,7 +26,7 @@
     <button class="button1" type="submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
     <button class="button2" onclick="window.location.href='{% url 'auth:register' %}'">Sign Up</button>
   </div>
-  
+</div>
 </form>
 
 {% endblock %}

@@ -1,7 +1,6 @@
 from django.urls import path
 from apps.userlogin.views import LoginView, AccountView, LogoutView, RegisterView, EmailConfirmationView
 
-
 app_name = 'userlogin'
 
 urlpatterns = [
@@ -10,5 +9,5 @@ urlpatterns = [
     path('account/', AccountView.as_view(), name='account'),
     path('register/', RegisterView.as_view(), name='register'),
     path('confirm_email/<str:code>/', EmailConfirmationView.as_view(), name='confirm_email'),
-    path('registration/success/', LoginView.as_view(), name='registration_success'),
+    #path('registration/success/', RegSuccessView.as_view(), name='registration_success'),
 ]

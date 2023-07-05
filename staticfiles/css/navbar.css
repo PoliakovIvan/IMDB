@@ -27,3 +27,13 @@ form {
     background-color: yellow;
     color: rgb(48, 48, 49);
   }
+.nav-item{
+  margin-top: 5px;
+}
+.menulinks{
+  display: flex;
+  
+}
+.menutags{
+  margin-left: 100px;
+}

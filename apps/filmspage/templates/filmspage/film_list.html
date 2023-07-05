@@ -3,6 +3,7 @@
 {% load i18n %}
 {% block content%}
 
+
 <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/film_list.css' %}">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
@@ -14,7 +15,7 @@
         <img src="./media/photo/fastxw.jpg" class="d-block w-100" alt="Fast X">
         <div class="carousel-caption1">
           <div class="caption-content1">
-            <a href="">
+            <a class="nav-link" href="">
               <img src="./media/photo/video-play-svgrepo-com.svg" alt="." width="70" height="70" style="display: inline-block;">
               <h3 style="color:white; display: inline-block;">'Форсаж Х'</h3>
               <h6 style="color:white; margin-left: 70px;">Watch the Final Trailer</h6>
@@ -26,7 +27,7 @@
         <img src="./media/photo/barbiw.jpg" class="d-block w-100" alt="Barbi">
         <div class="carousel-caption1">
           <div class="caption-content1">
-            <a href="">
+            <a class="nav-link" href="">
               <img src="./media/photo/video-play-svgrepo-com.svg" alt="." width="70" height="70" style="display: inline-block;">
               <h3 style="color:white; display: inline-block;"> 'Барбі'</h3>
               <h6 style="color:white; margin-left: 70px;">Watch the Final Trailer</h6>
@@ -38,7 +39,7 @@
         <img src="./media/photo/oppenheimer.jpg" class="d-block w-100" alt="Oppenheimer">
         <div class="carousel-caption1">
           <div class="caption-content1">
-            <a href="">
+            <a class="nav-link" href="">
               <img src="./media/photo/video-play-svgrepo-com.svg" alt="." width="70" height="70" style="display: inline-block;">
               <h3 style="color:white; display: inline-block;">'Оппенгеймер'</h3>
               <h6 style="color:white; margin-left: 70px;">Watch the Final Trailer</h6>
@@ -60,9 +61,10 @@
   <br/>
   <br/>
 
-  <H1 style="color: yellow;">What to watch</H1>
 
-
+<!-- What to watch-->
+<section class="whattowatch">
+<H1 style="color: yellow;">What to watch</H1>
 
   <div class="film-container">
     <div class="show-less-container">
@@ -71,60 +73,43 @@
         </button>
     </div>
 
-    {% for film in object_list  %}
-        {% if film.photo %}
-            <div class="filmfield {% if forloop.counter > 6 %}hidden{% endif %}">
-                <div class="image-container">
-                    <img src="{{ film.photo.url }}" alt="Film Photo">
-                </div>
-                <div class="namem">
-                    <a href="{% url 'filmspage:film-info' pk=film.id %}"><h3 class="moviename">{{ film.movie }}</h3></a>
-                </div>
-
-                <p class="filmtext">★ {{ film.rating }}</p>
-
-                <form action="{% url 'watchlist:add-to-watchlist' film_id=film.id %}" method="post">
-                    {% csrf_token %}
-                    <button class="btn btn-outline-primary">
-                        + Watchlist
-                    </button>
-                </form>
-              
-            </div>
-        {% endif %}
-    {% endfor %}
+    {% for film in object_list %}
+      {% if film.photo %}
+          {% if forloop.counter <= 12 %}
+              <div class="filmfield {% if forloop.counter > 6 %}hidden{% endif %}">
+                  <div class="image-container">
+                    <a class="nav-link" href="{% url 'filmspage:film-info' pk=film.id %}">
+                      <img src="{{ film.photo.url }}" alt="Film Photo">
+                    </a>
+                  </div>
+                  <div class="namem">
+                      <a class="nav-link" href="{% url 'filmspage:film-info' pk=film.id %}"><h3 class="moviename">{{ film.movie }}</h3></a>
+                  </div>
+                  <p class="filmtext">★ {{ film.rating }}</p>
+                  <form action="{% url 'watchlist:add-to-watchlist' film_id=film.id %}" method="post">
+                      {% csrf_token %}
+                      <button class="btn btn-outline-primary">
+                          + Watchlist
+                      </button>
+                  </form>
+              </div>
+          {% endif %}
+      {% endif %}
+  {% endfor %}
 
     <div class="show-more-container">
         <button id="showMoreBtn" class="show-more-btn">
             <span class="arrow-icon"></span>
         </button>
     </div>
-</div>
-    
-  
+  </div>
   <script src="{% static 'js/film_list.js' %}"></script>
+
+
   
-<footer>
-  <div class="iconsdiv">
-    <button class="icons"><img src="./media/icons/icons8-github-64.png" class="imgicons"></img></button>
-    <button class="icons"><img src="./media/icons/icons8-linkedin-50.png" class="imgicons"></img></button>
-    <button class="icons"><img src="./media/icons/icons8-instagram-50.png" class="imgicons"></img></button>
-    
-  </div>
-  <div class="footer_p">
-    <p> Get the IMDb App</p>
-    <p> Help</p>
-    <p> Site Index</p>
-    <p> IMDbPro</p>
-  </div>
-  <div class="footer_p">
-    <p> Press Room</p>
-    <p> Advertising</p>
-    <p> Jobs</p>
-    <p>Conditions of Use</p>
-    <p >Privacy Policy</p>
-    <p >Your Ads Privacy Choices</p>
-  </div>
-  <br>
-</footer>
+</section>
+
+
+  
+
 {% endblock %}

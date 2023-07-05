@@ -108,7 +108,7 @@
 
 .filmdetail {
   position: absolute;
-  top: 60%;
+  margin-top: 850px;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -234,3 +234,13 @@
   width: 30px;
 }
 
+.genres{
+
+  display: inline-block;
+  margin-left: 30px;
+
+
+    border: 1px solid #CCCCCC;
+    padding: 10px;
+    border-radius: 10px;
+}

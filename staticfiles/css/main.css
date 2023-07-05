@@ -32,11 +32,14 @@ h2{
   width: 60px;
   background-color: #262627;
   border: 1px solid transparent;
+  margin-left: 5px;
  
 }
 .iconsdiv{
-  margin-left: 600px;
-  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 200px;
 }
 
 .footer_p{
