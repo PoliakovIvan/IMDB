@@ -9,3 +9,5 @@ created to demonstrate the skills gained during courses
 ## Start project: 
 1. imdbvenv\scripts\activate
 2. python manage.py runserver
+
+ <a class="nav-link" href="{% url 'filmspage:film-list' %}">start poject!</a>
