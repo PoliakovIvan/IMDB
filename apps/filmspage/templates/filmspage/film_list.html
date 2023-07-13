@@ -1,92 +1,115 @@
 {% extends "base.html" %}
 {% load static %}
-{% load mainpage %}
 {% load i18n %}
 {% block content%}
 
+
 <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/film_list.css' %}">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
 <div class="wrapper">
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" class="divcont" >
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="./media/photo/fastxw.jpg" class="d-block w-100" alt="Fast X">
-            <div class="carousel-caption1">
-              <div class="caption-content1">
-              <a href="">
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" class="divcont">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="./media/photo/fastxw.jpg" class="d-block w-100" alt="Fast X">
+        <div class="carousel-caption1">
+          <div class="caption-content1">
+            <a class="nav-link" href="">
               <img src="./media/photo/video-play-svgrepo-com.svg" alt="." width="70" height="70" style="display: inline-block;">
               <h3 style="color:white; display: inline-block;">'Форсаж Х'</h3>
               <h6 style="color:white; margin-left: 70px;">Watch the Final Trailer</h6>
-              </a>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="./media/photo/barbiw.jpg" class="d-block w-100" alt="Barbi">
-            <div class="carousel-caption1">
-              <div class="caption-content1">
-                <a href="">
-                <img src="./media/photo/video-play-svgrepo-com.svg" alt="." width="70" height="70" style="display: inline-block;">
-                <h3 style="color:white; display: inline-block;"> 'Барбі'</h3>
-                <h6 style="color:white; margin-left: 70px;">Watch the Final Trailer</h6>
-                </a>
-                </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="./media/photo/oppenheimer.jpg" class="d-block w-100" alt="Oppenheimer">
-            <div class="carousel-caption1">
-              <div class="caption-content1">
-                <a href="">
-                <img src="./media/photo/video-play-svgrepo-com.svg" alt="." width="70" height="70" style="display: inline-block;">
-                <h3 style="color:white; display: inline-block;">'Оппенгеймер'</h3>
-                <h6 style="color:white; margin-left: 70px;">Watch the Final Trailer</h6>
-                </a>
-                </div>
-            </div>
+            </a>
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-  
       </div>
-  <br/>
-  <br/>
-
-<H1 style="color: yellow;">What to watch</H1>
-      <br/>
-  <div style="display: flex;">
-      {% for film in object_list %}
-      {% if film.photo %}
-      <div class="filmfield">
-        <div class="image-container" >
-          <img src="{{ film.photo.url }}" alt="Film Photo" height="400px">
-          <img src="./media/photo/bookmark-1-svgrepo-com.svg" alt="." class="bookmark" width="70 px" height= "70 px" >
+      <div class="carousel-item">
+        <img src="./media/photo/barbiw.jpg" class="d-block w-100" alt="Barbi">
+        <div class="carousel-caption1">
+          <div class="caption-content1">
+            <a class="nav-link" href="">
+              <img src="./media/photo/video-play-svgrepo-com.svg" alt="." width="70" height="70" style="display: inline-block;">
+              <h3 style="color:white; display: inline-block;"> 'Барбі'</h3>
+              <h6 style="color:white; margin-left: 70px;">Watch the Final Trailer</h6>
+            </a>
+          </div>
         </div>
-      <br>
-       
-      
-      <a href="{% url 'filmspage:film-info' pk=film.id%}"><h3 class="moviename">{{ film.movie }}</h3> </a>
-      
-      <p class="filmtext"> ★ {{ film.rating }} </p> 
-      <button class="btn btn-outline-primary" style="width: 200px; margin-left: 30px; background-color: rgb(49, 49, 49);">+ Watchlist</button>
-      <p class="filmtext">Жанр: {{ film.genre }}</p>   
-      
-
       </div>
-        <br> 
-        {% endif %}
-      
-      {% endfor %}
-      
+      <div class="carousel-item">
+        <img src="./media/photo/oppenheimer.jpg" class="d-block w-100" alt="Oppenheimer">
+        <div class="carousel-caption1">
+          <div class="caption-content1">
+            <a class="nav-link" href="">
+              <img src="./media/photo/video-play-svgrepo-com.svg" alt="." width="70" height="70" style="display: inline-block;">
+              <h3 style="color:white; display: inline-block;">'Оппенгеймер'</h3>
+              <h6 style="color:white; margin-left: 70px;">Watch the Final Trailer</h6>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+
   </div>
-<li> <a href="{% url 'filmspage:film-create'%}"> + add</a></li>
-</div> 
+  <br/>
+  <br/>
+
+
+<!-- What to watch-->
+<section class="whattowatch">
+<H1 style="color: yellow;">What to watch</H1>
+
+  <div class="film-container">
+    <div class="show-less-container">
+        <button id="showLessBtn" class="show-less-btn" onclick="showLessMovies()">
+            <span class="arrow-icon"></span>
+        </button>
+    </div>
+
+    {% for film in object_list %}
+      {% if film.photo %}
+          {% if forloop.counter <= 12 %}
+              <div class="filmfield {% if forloop.counter > 6 %}hidden{% endif %}">
+                  <div class="image-container">
+                    <a class="nav-link" href="{% url 'filmspage:film-info' pk=film.id %}">
+                      <img src="{{ film.photo.url }}" alt="Film Photo">
+                    </a>
+                  </div>
+                  <div class="namem">
+                      <a class="nav-link" href="{% url 'filmspage:film-info' pk=film.id %}"><h3 class="moviename">{{ film.movie }}</h3></a>
+                  </div>
+                  <p class="filmtext">★ {{ film.rating }}</p>
+                  <form action="{% url 'watchlist:add-to-watchlist' film_id=film.id %}" method="post">
+                      {% csrf_token %}
+                      <button class="btn btn-outline-primary">
+                          + Watchlist
+                      </button>
+                  </form>
+              </div>
+          {% endif %}
+      {% endif %}
+  {% endfor %}
+
+    <div class="show-more-container">
+        <button id="showMoreBtn" class="show-more-btn">
+            <span class="arrow-icon"></span>
+        </button>
+    </div>
+  </div>
+  <script src="{% static 'js/film_list.js' %}"></script>
+
+
+  
+</section>
+
+
+  
 
 {% endblock %}
