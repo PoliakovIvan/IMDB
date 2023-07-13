@@ -1,0 +1,53 @@
+body {
+    background-color: rgb(22, 22, 23); 
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+  }
+
+
+.wrapper{
+  margin-left: 250px;
+  margin-right: 250px;
+}
+
+.divcont{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}  
+
+
+p{
+  color: #ffffff;
+}
+
+h2{
+  color: #fffbfb;
+}
+.svgcont{
+  height: 10px;
+}
+
+.icons{
+  height: 60px;
+  width: 60px;
+  background-color: #262627;
+  border: 1px solid transparent;
+  margin-left: 5px;
+ 
+}
+.iconsdiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 200px;
+}
+
+.footer_p{
+  display: flex;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Відступ між елементами */
+  
+}

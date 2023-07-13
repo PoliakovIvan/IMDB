@@ -1,0 +1,246 @@
+.film-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1500px; /* Максимальна ширина контейнера фільмів */
+  margin: 0 auto; /* Центрування контейнера на сторінці */
+}
+
+.filmfield {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100% / 7);
+  margin-bottom: 20px;
+  background-color: #262627;
+  margin-left: 5px;
+  opacity: 0; /* Початкове значення прозорості */
+  animation-name: fadeIn; /* Назва анімації */
+  animation-duration: 1s; /* Тривалість анімації */
+  animation-fill-mode: forwards; /* Залишити кінцеве значення стилів після анімації */
+}
+
+.hidden {
+  display: none;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 150%;
+}
+
+.image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bookmark {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  height: 30px;
+}
+
+.namem {
+  margin-top: 10px;
+}
+
+.moviename {
+  color: white;
+  font-size: 16px;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmtext {
+  color: white;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.btn {
+  width: 150px;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .filmfield {
+    width: calc(100% / 3); /* Для пристроїв з шириною екрана <= 768px буде 3 фільми у ряду */
+  }
+}
+
+.carousel-caption1 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачний колір фону */
+  color: #fff; /* Колір тексту */
+}
+
+.caption-content1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.bookmark {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  fill: awd;
+}
+
+.image-container {
+  position: relative;
+}
+
+.filmdetail {
+  position: absolute;
+  margin-top: 850px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.movieinfo {
+  display: inline-block;
+  font-size: 36px;
+  color: white;
+  font-weight: bold;
+}
+
+.mediainfo {
+  display: flex;
+  align-items: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.film-container {
+  position: relative;
+}
+
+.show-more-container {
+  position: absolute;
+  top: 45%;
+  right: 0;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
+.show-more-btn {
+  width: 40px;
+  height: 40px;
+  background-color: #262627;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.arrow-icon {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+  transform: rotate(45deg);
+}
+.show-less-btn {
+  width: 40px;
+  height: 40px;
+  background-color: #262627;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-right: 10px;
+  transform: rotate(-90deg);
+}
+
+.show-less-btn .arrow-icon {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+  transform: rotate(-45deg);
+}
+
+.show-less-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button_star{
+  background-color:  rgb(22, 22, 23);
+  border: none;
+}
+.rating:not(:checked) > input {
+  position: absolute;
+  appearance: none;
+}
+
+.rating:not(:checked) > label {
+  float: right;
+  cursor: pointer;
+  font-size: 50px;
+  color: #666;
+}
+
+.rating:not(:checked) > label:before {
+  content: '★';
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: #e58e09;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #ff9e0b;
+}
+
+.rating > input:checked ~ label {
+  color: #ffa723;
+}
+
+.imgicons{
+  height: 30px;
+  width: 30px;
+}
+
+.genres{
+
+  display: inline-block;
+  margin-left: 30px;
+
+
+    border: 1px solid #CCCCCC;
+    padding: 10px;
+    border-radius: 10px;
+}
